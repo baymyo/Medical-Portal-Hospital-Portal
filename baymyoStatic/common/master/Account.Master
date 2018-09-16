@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Account.master.cs" Inherits="baymyoStatic.master.Account" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%= baymyoStatic.Settings.Site.Title %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "jquery-1.12.3.min.js") %>"></script>
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "bootstrap.min.css") %>" />
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "bootstrap-theme.min.css") %>" />
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "user.css") %>" />
+</head>
+<body>
+    <form id="frmAdmin" runat="server">
+        <div class="bgCover"></div>
+        <div class="bgShine"></div>
+        <div class="container">
+            <asp:Literal EnableViewState="false" ID="ltrMenu" runat="server" Visible="true" />
+            <asp:ContentPlaceHolder ID="plcModul" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="clearfix visible-sm-block"></div>
+            <p style="color: #78909C">
+                <asp:Literal EnableViewState="false" ID="ltrCopyright" runat="server" Visible="false" />
+            </p>
+            <div class="clearfix visible-sm-block"></div>
+        </div>
+    </form>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "bootstrap.min.js") %>"></script>
+</body>
+</html>

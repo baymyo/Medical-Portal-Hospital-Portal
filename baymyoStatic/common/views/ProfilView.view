@@ -1,0 +1,57 @@
+﻿<div class="row">
+    <div class="col-lg-3 col-sm-6 text-center">
+        <img class="img-circle img-responsive img-center"
+            src="%ResimUrl%"
+            alt="%Adi% %Soyadi%">
+        <br/>
+        <a href="#">
+            <h3>%Adi% %Soyadi%
+            <br/><small>%Meslek%</small>
+            </h3>
+        </a>
+        <div class="profile-userbuttons">
+            <a href="#" class="btn btn-success btn-sm">Bilgiler</a>
+            <a href="%Iletisim%" class="btn btn-danger btn-sm">Mesaj</a>
+        </div>
+    </div>
+    <div class=" col-md-9 col-lg-9 ">
+        <table class="table table-user-information">
+            <tbody>
+                <tr>
+                    <td>Görevi:</td>
+                    <td>%Meslek%</td>
+                </tr>
+                <tr>
+                    <td>Eğitim:</td>
+                    <td>%Egitim%</td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td>%Telefon%</td>
+                </tr>
+                <tr>
+                    <td>GSM:</td>
+                    <td>%GSM%</td>
+                </tr>
+                <tr>
+                    <td>Şehir</td>
+                    <td>%Sehir%</td>
+                </tr>
+                <tr>
+                    <td>Web Sitesi</td>
+                    <td>%Web%</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>%Mail%</td>
+                </tr>
+                <tr>
+                    <td>Cinsiyet:</td>
+                    <td>%Cinsiyet%</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/doktorlar" class="btn btn-primary">Diğer Doktorlar</a>
+        <a href="%Makaleleri%" class="btn btn-primary">Makaleleri</a>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="baymyoStatic.master.Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= baymyoStatic.Settings.Site.Title %></title>
+
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "font-awesome.min.css") %>" />
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CommonPath + "owl-carousel/assets/owl.carousel.css") %>" />
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "animate.css") %>" />
+    <!-- BOOSTRAP -->
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "bootstrap.min.css") %>" />
+    <%--    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "bootstrap-theme.min.css") %>" />--%>
+    <!-- WEBSITE -->
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "style.css") %>" />
+    <!-- JQUERY -->
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "jquery-1.12.3.min.js") %>"></script>
+    <%--    <script type="text/javascript">
+        $(document).ready(function () { $.ajaxSetup({ cache: true }); });
+    </script>--%>
+    <link id="page_favicon" href="~/common/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link id="shortcut_favicon" href="~/common/images/favicon.ico" rel="shortcut icon" />
+</head>
+<body>
+    <form id="frmDefault" runat="server">
+        <!--header-->
+        <div class="header">
+            <!--header-top-->
+            <div class="header-top clearfix">
+                <div class="container">
+                    <div class="left-side pull-left">
+                        <span>Sosyal Medya :</span>
+                        <ul class="list-inline social-list">
+                            <li><a href="<%= baymyoStatic.Settings.Site.TwitterLinks %>"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="<%= baymyoStatic.Settings.Site.FaceBookLinks %>"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="<%= baymyoStatic.Settings.Site.InstagramLinks %>"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="right-side pull-right">
+                        Bize Ulaşın:&nbsp;&nbsp;&nbsp;<label><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;444 91 80&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;0326 643 33 01</label>
+                    </div>
+                </div>
+            </div>
+            <!--navbar-->
+            <nav class="navbar navbar-default navbar-static-top navbar-center-brand">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="menu">menü</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <a class="navbar-brand wow fadeIn" href="/ref=logo"><img src="/common/images/logo.png"></a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="active"><a href="/home">Anasayfa</a></li>
+            <li><a href="/doktorlar">Doktorlar</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kurumsal Bilgiler</a>
+              <ul class="dropdown-menu">
+                  <asp:Repeater runat="server" ID="rptTop">
+                      <ItemTemplate>
+                          <li><a href="<%# baymyoStatic.Core.CreateLink("sayfa",Eval("ID"),Eval("Baslik")) %>"><%# Eval("Baslik") %></a></li>
+                      </ItemTemplate>
+                  </asp:Repeater>
+                  <li><a href="/fotogaleri">Foto Galeri</a></li>
+                  <li><a href="/videogaleri">Media Galeri</a></li>
+                  <li><a href="/firmarehberi">Önemli Bağlantılar</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/sayfa/1/hizmetlerimiz.html">Hizmetlerimiz</a></li>
+            <li><a href="/haberler">Haberler</a></li>
+            <li><a href="/iletisim">İletişim bilgileri</a></li>
+          </ul>
+        </div><!--navbar-collapse end-->
+      </div><!--container end-->
+    </nav>
+            <!--navbar end-->
+        </div>
+        <!--header end-->
+        <asp:ContentPlaceHolder ID="plcModul" runat="server">
+        </asp:ContentPlaceHolder>
+        <!--subscribe-section-->
+        <section class="subscribe-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="subscribe-inner">
+<%--                        <h4>Forma kayıt olarak bizimle ilgili haberlere anında ulaşabilirsiniz.</h4>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="E-mail Adresiniz">
+                            <button class="btn btn-primary" type="submit">Kayıt ol</button>
+                        </div>--%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--main-group end-->
+        <!--footer-->
+        <footer class="footer">
+    <!--widget-group-->
+    <div class="widget-group">
+      <div class="container">
+          <asp:Literal EnableViewState="false" ID="ltrFooter" runat="server" />
+      </div>
+    </div><!--widget-group end-->
+    <!--footer-bottom-->
+    <div class="footer-bottom">
+        <div class="container">
+        <!--MEDİCANA ARSUZ | © Tüm Hakları saklıdır. 2004 - 2016-->
+        <span class="copyright"><asp:Literal EnableViewState="false" ID="ltrCopyright" runat="server" /></span>
+        <span class="right-link pull-right"><a href="//www.baymyo.com/?ref=medicaarsuz">baymyo software</a></span>
+        </div>
+    </div>
+    </footer>
+        <asp:Literal EnableViewState="false" ID="ltrGoogleAnalytics" runat="server" />
+    </form>
+    <!--script-->
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "bootstrap.min.js") %>"></script>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "wow.min.js") %>"></script>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.CommonPath + "owl-carousel/owl.carousel.min.js") %>"></script>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "main.js") %>" charset="utf-8"></script>
+    <!--[if lt IE 9]>
+<script src="/scripts/html5shiv.js"></script>
+<![endif]-->
+    <!-- scripts -->
+</body>
+</html>

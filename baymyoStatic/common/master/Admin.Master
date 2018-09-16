@@ -1,0 +1,232 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="baymyoStatic.master.Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%= baymyoStatic.Settings.Site.Title %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "bootstrap.min.css") %>" />
+    <link rel="Stylesheet" type="text/css" href="<%= ResolveUrl(baymyoStatic.Settings.CssPath + "bootstrap-theme.min.css") %>" />
+    <style type="text/css">
+        body {
+            /*min-height: 2000px;*/
+            padding-top: 50px;
+        }
+    </style>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "jquery-1.12.3.min.js") %>"></script>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "jquery.tipTip.js") %>"></script>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "jquery.maskedinput-1.3.min.js") %>"></script>
+    <link id="page_favicon" href="~/favadmin.ico" rel="icon" type="image/x-icon" />
+    <link id="shortcut_favicon" href="~/images/favadmin.ico" rel="shortcut icon" />
+    <script type="text/javascript">
+        (function ($) {
+            $.fn.extend({
+                filter_input: function (options) {
+                    var defaults = {
+                        regex: ".*",
+                        live: false
+                    }
+                    var options = $.extend(defaults, options);
+                    var regex = new RegExp(options.regex);
+                    function filter_input_function(event) {
+                        var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0;
+                        // 8 = backspace, 9 = tab, 13 = enter, 35 = end, 36 = home, 37 = left, 39 = right, 46 = delete
+                        if (key == 8 || key == 9 || key == 13 || key == 35 || key == 36 || key == 37 || key == 39 || key == 46) {
+                            if ($.browser.mozilla) {
+                                // if charCode = key & keyCode = 0
+                                // 35 = #, 36 = $, 37 = %, 39 = ', 46 = .
+                                if (event.charCode == 0 && event.keyCode == key) {
+                                    return true;
+                                }
+                            }
+                        }
+                        var string = String.fromCharCode(key);
+                        if (regex.test(string)) {
+                            return true;
+                        } else if (typeof (options.feedback) == 'function') {
+                            options.feedback.call(this, string);
+                        }
+                        return false;
+                    }
+                    if (options.live) {
+                        $(this).live('keypress', filter_input_function);
+                    } else {
+                        return this.each(function () {
+                            var input = $(this);
+                            input.unbind('keypress').keypress(filter_input_function);
+                        });
+                    }
+                }
+            });
+        })(jQuery);
+        var allCheckBoxSelector = '#dataGrid1 input[id*="chkAll"]:checkbox';
+        var checkBoxSelector = '#dataGrid1 input[id*="chkSelected"]:checkbox';
+        function ToggleCheckUncheckAllOptionAsNeeded() {
+            var totalCheckboxes = $(checkBoxSelector),
+            checkedCheckboxes = totalCheckboxes.filter(":checked"),
+            noCheckboxesAreChecked = (checkedCheckboxes.length === 0),
+            allCheckboxesAreChecked = (totalCheckboxes.length === checkedCheckboxes.length);
+            $(allCheckBoxSelector).prop('checked', allCheckboxesAreChecked);
+        }
+        $(document).ready(function () {
+            $(".toolTip").tipTip({ maxWidth: "auto", edgeOffset: 3 });
+            /*chekbox*/
+            $(document).on('click', allCheckBoxSelector, function () {
+                $(checkBoxSelector).prop('checked', $(this).is(':checked'));
+                ToggleCheckUncheckAllOptionAsNeeded();
+            });
+            $(document).on('click', checkBoxSelector, ToggleCheckUncheckAllOptionAsNeeded);
+            $("textarea#Embed").focusout(function () {
+                var url = $(this).val();
+                if (url.indexOf('http') == 0) {
+                    var id = url.match("[\\?&]v=([^&#]*)");
+                    id = id[1];
+                    $.getJSON('http://gdata.youtube.com/feeds/api/videos/' + id + '?v=2&alt=json', function (data) {
+                        var em = '<iframe width="728" height="410" src="//www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+                        var title = data.entry['title']['$t'];
+                        var desc = data.entry['media$group']['media$description']['$t'];
+                        var img = data.entry['media$group']['media$thumbnail'][1]['url'];
+                        $("input#Baslik").val(title);
+                        /*$("input#Etiket").val(desc);*/
+                        $("input#ImgUrl").val(img);
+                        $("img#VideoResim").attr("src", img);
+                        $("#youtubeHTML").empty();
+                        $("#youtubeHTML").append('<center>' + em + '</center>');
+                        $("textarea#Embed").val(em);
+                    });
+                }
+            });
+            $("textarea#HaberEmbed").focusout(function () {
+                var url = $(this).val();
+                if (url.indexOf('http') == 0) {
+                    var id = url.match("[\\?&]v=([^&#]*)");
+                    id = id[1];
+                    $.getJSON('http://gdata.youtube.com/feeds/api/videos/' + id + '?v=2&alt=json', function (data) {
+                        var em = '<iframe width="728" height="410" src="//www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+                        var img = data.entry['media$group']['media$thumbnail'][1]['url'];
+                        $("#youtubeImage").val(img);
+                        $("#youtubeHTML").empty();
+                        $("#youtubeHTML").append('<center>' + em + '</center>');
+                        $("textarea#HaberEmbed").val(em);
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<%= baymyoStatic.Settings.PanelPath %>">#Panel<%= toplamSayi > 0 ? "&nbsp;<span class='badge'>"+toplamSayi+"</span>" : "" %></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-envelope"></i> Kutu<%= (sorular+yorumlar) > 0 ? "&nbsp;<span class='badge'>"+(sorular+yorumlar)+"</span>" : "" %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=mesajliste" %>"><i class="glyphicon glyphicon-hand-up"></i> Mesajlar<%= sorular > 0 ? "&nbsp;<span class='badge'>"+sorular+"</span>" : "" %></a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=yorumliste" %>"><i class="glyphicon glyphicon-comment"></i> Yorumlar<%= yorumlar > 0 ? "&nbsp;<span class='badge'>"+yorumlar+"</span>" : "" %></a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-fire"></i> Manşet <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=manset&mdl=diger&mcid=" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Manşet</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=mansetliste" %>"><i class="glyphicon glyphicon-th-list"></i> Manşet Listesi</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-bullhorn"></i> Haber<%= haberler > 0 ? "&nbsp;<span class='badge'>"+haberler+"</span>" : "" %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=haber" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Haber</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=haberliste" %>"><i class="glyphicon glyphicon-th-list"></i> Haber Listesi</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=habereditorliste" %>"><i class="glyphicon glyphicon-th-list"></i> Haber Editör Listesi</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=kategori&mdl=haber" %>"><i class="glyphicon glyphicon-folder-open"></i> Kategori Tanımla</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-font"></i> Makale<%= makaleler > 0 ? "&nbsp;<span class='badge'>"+makaleler+"</span>" : "" %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=makale" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Makale</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=makaleliste" %>"><i class="glyphicon glyphicon-th-list"></i> Makale Listesi</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=kategori&mdl=makale" %>"><i class="glyphicon glyphicon-folder-open"></i> Kategori Tanımla</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-film"></i> Media <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=galeri" %>"><i class="glyphicon glyphicon-picture"></i> Yeni Galeri</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=galeriliste" %>"><i class="glyphicon glyphicon-th-list"></i> Galeri Listesi</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=video" %>"><i class="glyphicon glyphicon-facetime-video"></i> Yeni Video</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=videoliste" %>"><i class="glyphicon glyphicon-th-list"></i> Video Listesi</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-link"></i> Bağlantı <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=baglanti" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Bağlantı</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=baglantiliste" %>"><i class="glyphicon glyphicon-th-list"></i> Bağlantı Listesi</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-file"></i> Sayfa <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=sayfa" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Sayfa</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=sayfaliste" %>"><i class="glyphicon glyphicon-th-list"></i> Sayfa Listesi</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Kullanıcı<%= hesaplar > 0 ? "&nbsp;<span class='badge'>"+hesaplar+"</span>" : "" %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=hesap" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Kullanıcı</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=hesap&type=1" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Yönetici</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=hesap&type=2" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Doktor</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=hesap&type=3" %>"><i class="glyphicon glyphicon-floppy-save"></i> Yeni Editör</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=hesapliste" %>"><i class="glyphicon glyphicon-th-list"></i> Kullanıcı Listesi</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Ayarlar <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+<%--                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=mansethtml" %>"><i class="glyphicon glyphicon-wrench"></i> Manşet HTML</a></li>--%>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=portalfooter" %>"><i class="glyphicon glyphicon-wrench"></i> Alt HTML</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=portalseo" %>"><i class="glyphicon glyphicon-filter"></i> Site SEO</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=portalayarlari" %>"><i class="glyphicon glyphicon-wrench"></i> Site Ayarları</a></li>
+                <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=bakimliste" %>"><i class="glyphicon glyphicon-tasks"></i> Veritabanı Bakımı</a></li>
+                <%--  <li><a href="<%= baymyoStatic.Settings.PanelPath + "?go=portalstyle" %>"><i class="glyphicon glyphicon-wrench"></i> Tema Sitilleri</a></li>--%>
+              </ul>
+              </li>
+              <li><a href="<%= baymyoStatic.Settings.VirtualPath + "?go=logout" %>"><i class="glyphicon glyphicon-off"></i> Çıkış</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <form id="frmAdmin" runat="server">
+        <div class="container">
+            <asp:ContentPlaceHolder ID="plcModul" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="clearfix visible-sm-block"></div>
+            <p style="color: #cacaca">
+                <a href="//www.baymyo.com/?ref=medicanaarsuz">baymyo software</a>
+            </p>
+            <div class="clearfix visible-sm-block"></div>
+        </div>
+    </form>
+    <script src="<%= ResolveUrl(baymyoStatic.Settings.ScriptPath + "bootstrap.min.js") %>"></script>
+</body>
+</html>

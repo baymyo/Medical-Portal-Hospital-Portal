@@ -1,0 +1,38 @@
+﻿<div class="row">
+          <div class="footer-widget col-md-4 col-sm-12">
+            <h5 class="widget-title">MEDİCA ARSUZ</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio blanditiis, quis amet reprehenderit quas voluptatem, facere ducimus architecto doloremque neque?</p>
+          </div>
+          <div class="footer-widget col-md-2 col-sm-4">
+            <h5 class="widget-title">Kurumsal</h5>
+            <ul class="list-unstyled">
+              <li><a href="#!">Kurumsal</a></li>
+              <li><a href="#!">Hastaneler</a></li>
+              <li><a href="#!">Bölümler</a></li>
+              <li><a href="#!">Doktorlar</a></li>
+              <li><a href="#!">Site Haritası</a></li>
+            </ul>
+          </div>
+          <div class="footer-widget col-md-2 col-sm-4">
+            <h5 class="widget-title">Hizmetler</h5>
+            <ul class="list-unstyled">
+              <li><a href="#!">Hastaneler</a></li>
+              <li><a href="#!">Bölümler</a></li>
+              <li><a href="#!">Doktorlar</a></li>
+              <li><a href="#!">Hasta Rehberi</a></li>
+              <li><a href="#!">Online Hizmetler</a></li>
+            </ul>
+          </div>
+          <div class="footer-widget col-md-2 col-sm-4">
+            <h5 class="widget-title">Bilgilendirme</h5>
+            <ul class="list-unstyled">
+              <li><a href="#!">Merak Ettikleriniz</a></li>
+              <li><a href="#!">Hasta Hakları</a></li>
+              <li><a href="#!">Ziyaretçi Politikamız</a></li>
+              <li><a href="#!">Refakatçi Politikamız</a></li>
+            </ul>
+          </div>
+          <div class="footer-widget widget-logo col-md-2 col-sm-12">
+            <img src="/common/images/logo-footer.png" alt="">
+          </div>
+        </div>

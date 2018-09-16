@@ -1,0 +1,24 @@
+﻿<h1 style="font-weight: 600;">%Baslik%</h1>
+<p>%Ozet%</p>
+%ResimUrl%
+<p>%Icerik%</p>
+<div class="clear"></div>
+<p style="text-align:left">
+    <strong id="newsCategory" style="padding: 5px 0px; color: #ffffff; background-color: %Renk%">%Kategori%</strong>&nbsp;&nbsp;<time pubdate="pubdate" datetime="%KayitTarihiSEO%">%KayitTarihi%</time>
+</p>
+<div class="clear"></div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=baymyo" async="async"></script>
+<script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "headline": "%Baslik%",
+  "alternativeHeadline": "%BaslikDiger%",
+  "image": ["%ImageUrl%"],
+  "datePublished": "%KayitTarihiSEO%",
+  "description": "%Ozet%",
+  "articleBody": "%Body%"
+  }
+</script>

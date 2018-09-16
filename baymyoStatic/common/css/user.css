@@ -1,0 +1,195 @@
+﻿@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, legend, input, select, textarea, button,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+ol, ul {
+    list-style: none;
+    color: #1d1d1d;
+}
+
+body {
+    padding-top: 80px;
+    background: #f6f6f6 url("../images/slider-bg.jpg") no-repeat center top;
+    color: #5e5e5e;
+    font-family: 'Oswald', sans-serif;
+}
+
+html, body, .bgCover, .bgShine {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bgCover {
+    position: fixed;
+    z-index: -99;
+}
+
+.bgShine {
+    position: fixed;
+    /*background-color: rgba(0, 169, 255, 0.25);*/
+    z-index: -98;
+}
+/*boostrap - forms*/
+.table {
+    background: #fff;
+    color: #78909C;
+    font-size: 16px;
+}
+
+.form-control {
+    background: transparent;
+    color: #5e5e5e;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    background: transparent;
+    color: #5e5e5e;
+}
+
+.form-group select {
+    /*border: 1px solid #ccc8c5;
+    padding: 2px 2px;*/
+}
+
+.form-group option {
+    background: transparent;
+    color: #000;
+}
+/*
+==================================================================
+File Name: Page SCSS
+==================================================================
+*/
+@font-face {
+    font-family: 'fontello';
+    src: url("../../common/fonts/fontello.eot?92169038");
+    src: url("../../common/fonts/fontello.eot?92169038#iefix") format("embedded-opentype"), url("../../common/fonts/fontello.woff2?92169038") format("woff2"), url("../../assets/fonts/fontello.woff?92169038") format("woff"), url("../../common/fonts/fontello.ttf?92169038") format("truetype"), url("../../common/fonts/fontello.svg?92169038#fontello") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+    content: '\e800';
+}
+
+/* '' */
+.icon-try:before {
+    content: '\e801';
+}
+
+/* '' */
+.icon-angle-down:before {
+    content: '\e802';
+}
+
+/* '' */
+.icon-angle-circled-left:before {
+    content: '\e803';
+}
+
+/* '' */
+.icon-spin5:before {
+    content: '\e805';
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #DDD;
+}
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        border-width: 0;
+    }
+
+    .nav-tabs > li > a {
+        border: none;
+        color: #ccc8c5;
+        font-size: 16px;
+    }
+
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+            border: none;
+            color: #ff7900 !important;
+            background: transparent;
+        }
+
+        .nav-tabs > li > a::after {
+            content: "";
+            background: #ff7900;
+            height: 2px;
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            bottom: -1px;
+            transition: all 250ms ease 0s;
+            transform: scale(0);
+        }
+
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+        transform: scale(1);
+    }
+
+.tab-nav > li > a::after {
+    background: #21527d none repeat scroll 0% 0%;
+    color: #fff;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+.tab-pane {
+    padding: 15px 0;
+}
+
+.card {
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    color: #666;
+}
+
+    .card > .tab-content > .tab-pane div > h2 {
+        color: #ff7900 !important;
+    }
+
+    .card .form-group input, .card .form-group select, .card .form-group textarea {
+        background: transparent;
+        color: #1d1d1d;
+    }
+/*# sourceMappingURL=main.css.map */

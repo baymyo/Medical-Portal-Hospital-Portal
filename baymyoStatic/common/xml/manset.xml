@@ -1,0 +1,60 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="manset" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="manset">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" type="xs:string" minOccurs="0" />
+                <xs:element name="modulid" type="xs:string" minOccurs="0" />
+                <xs:element name="resimbuyuk" type="xs:string" minOccurs="0" />
+                <xs:element name="baslik1" type="xs:string" minOccurs="0" />
+                <xs:element name="baslik2" type="xs:string" minOccurs="0" />
+                <xs:element name="aciklama" type="xs:string" minOccurs="0" />
+                <xs:element name="baglanti" type="xs:string" minOccurs="0" />
+                <xs:element name="dugme" type="xs:string" minOccurs="0" />
+                <xs:element name="dil" type="xs:string" minOccurs="0" />
+                <xs:element name="kayittarihi" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="guncellemetarihi" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="yerlesim" type="xs:short" minOccurs="0" />
+                <xs:element name="aktif" type="xs:unsignedByte" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <manset>
+    <id>a8066ed2-f9b5-4e7b-9059-2e945fb195dd</id>
+    <modulid>haber</modulid>
+    <resimbuyuk>test-1-buyuk-025638-d1b887.png</resimbuyuk>
+    <baslik1>test 1</baslik1>
+    <baslik2>test 2</baslik2>
+    <aciklama>açıklama</aciklama>
+    <baglanti>/haber/6/.html</baglanti>
+    <dugme>DEVAMI İÇİN TIKLA</dugme>
+    <dil />
+    <kayittarihi>2016-08-06T02:38:56+03:00</kayittarihi>
+    <guncellemetarihi>2016-08-06T02:38:56+03:00</guncellemetarihi>
+    <yerlesim>1</yerlesim>
+    <aktif>1</aktif>
+  </manset>
+  <manset>
+    <id>71fcd84e-0f8a-4a78-b57c-70f595b46d04</id>
+    <modulid>diger</modulid>
+    <resimbuyuk>medica-arsuz-1-buyuk-021418-f34461.png</resimbuyuk>
+    <baslik1>MEDİCA ARSUZ 1</baslik1>
+    <baslik2>PROFESYONEL KADRO</baslik2>
+    <aciklama>Hastanemizde hasta kabul ve diğer tüm işlemlerde nüfus cüzdanı olmadan işlem yapılmamaktadır.</aciklama>
+    <baglanti>/contact</baglanti>
+    <dugme>RANDEVU AL</dugme>
+    <dil />
+    <kayittarihi>2016-08-06T02:18:14+03:00</kayittarihi>
+    <guncellemetarihi>2016-08-06T02:35:21+03:00</guncellemetarihi>
+    <yerlesim>1</yerlesim>
+    <aktif>1</aktif>
+  </manset>
+</NewDataSet>

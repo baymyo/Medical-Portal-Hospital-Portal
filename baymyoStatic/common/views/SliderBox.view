@@ -1,0 +1,48 @@
+﻿<div class="slider-item">
+  <div class="container">
+    <div class="slider-content">
+      <h1 class="heading">
+        MEDİCA <span class="red">ARSUZ 1</span>
+      </h1>
+      <h2 class="heading">PROFESYONEL KADRO</h2>
+      <p>
+        Hastanemizde hasta kabul ve diğer tüm işlemlerde<br>
+                        nüfus cüzdanı olmadan işlem yapılmamaktadır.
+                    </p>
+      <a href="/contact" class="btn btn-danger btn-lg">Randevu Al</a>
+    </div>
+    <img class="hasta-doktor hidden-md hidden-sm hidden-xs" src="/common/images/hasta-doktor-image.png" alt="">
+            </div>
+</div>
+<div class="slider-item">
+  <div class="container">
+    <div class="slider-content">
+      <h1 class="heading">
+        MEDİCA <span class="red">ARSUZ 2</span>
+      </h1>
+      <h2 class="heading">PROFESYONEL KADRO</h2>
+      <p>
+        Hastanemizde hasta kabul ve diğer tüm işlemlerde<br>
+                        nüfus cüzdanı olmadan işlem yapılmamaktadır.
+                    </p>
+      <a href="/contact" class="btn btn-danger btn-lg">Randevu Al</a>
+    </div>
+    <img class="hasta-doktor hidden-md hidden-sm hidden-xs" src="/common/images/hasta-doktor-image.png" alt="">
+            </div>
+</div>
+<div class="slider-item">
+  <div class="container">
+    <div class="slider-content">
+      <h1 class="heading">
+        MEDİCA <span class="red">ARSUZ 3</span>
+      </h1>
+      <h2 class="heading">PROFESYONEL KADRO</h2>
+      <p>
+        Hastanemizde hasta kabul ve diğer tüm işlemlerde<br>
+                        nüfus cüzdanı olmadan işlem yapılmamaktadır.
+                    </p>
+      <a href="/contact" class="btn btn-danger btn-lg">Randevu Al</a>
+    </div>
+    <img class="hasta-doktor hidden-md hidden-sm hidden-xs" src="/common/images/hasta-doktor-image.png" alt="">
+            </div>
+</div>
